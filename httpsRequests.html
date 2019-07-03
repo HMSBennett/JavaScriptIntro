@@ -1,11 +1,116 @@
 <html>
-    <head>
-        <title>Bazzatron3000</title>
-        <script>
-            
-        </script>
-    </head>
-    <body>
-        <h1>Hello, is it me you're looking for?</h1>
-    </body>
+   <head>
+       <title>Bazzatron3000</title>
+       <script>
+
+           // let henry = {
+           //     height: 180,
+           //     fat: "very",
+           //     age: "old",
+           //     girls: [
+           //         "mike",
+           //         "josie",
+           //         "ann"
+           //     ]
+           // }
+
+           // for(let att in henry){
+           //     console.log(henry[att]);
+           // }
+
+           // for(let girl of henry.girls){
+           //     console.log(girl);
+           // }
+
+
+           //--------------------------------------------------------
+
+           let url = "https://raw.githubusercontent.com/ewomackQA/JSONDataRepo/master/example.json";
+           // let request = new XMLHttpRequest();
+           // request.open("GET", url);
+           // request.onload = function(){
+           //     console.log(request.response);
+           // }
+           // request.send();
+
+           //--------------------------------------------------------
+
+           let getInfo = function(url, nextFunc){
+               let request = new XMLHttpRequest();
+               request.open("GET", url);
+               request.responseType = "json"
+               request.onload = function(){
+                   nextFunc(request.response);
+               }
+               request.send();
+           }
+
+           let printy = function(heroes){
+               // console.log(heroes);
+               for(let atty in heroes){
+                   if(typeof(heroes[atty]) != "object"){
+                       document.writeln(heroes[atty]);
+                   }else{
+                       for(let members of heroes[atty]){
+                           for(let memAtt in members){
+                               document.writeln(members[memAtt]);
+                           }
+                       }
+                   }
+               }
+           }
+
+           getInfo(url, printy);
+
+           // let pretty = function(info){
+           //     document.writeln(info.members[2].name);
+           //     document.writeln(info.members[2].powers[0]);
+           // }
+
+           // getInfo(url, pretty);
+
+           //--------------------------------------------------------
+           // let mathy = {
+           //     mult: function (num1, num2){
+           //         console.log(num1 * num2);
+           //     },
+           //     div: function (num1, num2){
+           //         console.log(num1 / num2);
+           //     }
+
+           //     mult(2,8);
+           //     div(4, 2);
+           // }
+
+           //--------------------------------------------------------
+
+           // console.log(mathy.mult);
+
+           // let mathy = {};
+
+           // mathy.multiply = mult;
+           // mathy.divide = div;
+
+           // mathy.multiply(3, 4);
+
+           // console.log(mathy.multiply);
+
+           //--------------------------------------------------------
+
+           // let returnTwo = function(){
+           //     return 2;
+           // }
+
+           // let printAll = function(first, nextFunction){
+           //     console.log(first);
+           //     console.log(nextFunction());
+           // }
+
+           // printAll(1, returnTwo);
+
+       </script>
+   </head>
+   <body>
+       <h1>Hello, is it me you're looking for?</h1>
+   </body>
 </html>
